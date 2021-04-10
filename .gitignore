@@ -1,1 +1,15 @@
 .idea/
+
+web/media/
+
+web/web/settings.py
+
+# mongodb
+mongodb/db/*.wt
+mongodb/db/*.lock
+mongodb/db/*.bson
+mongodb/db/*.turtle
+mongodb/db/WiredTiger
+.env_mongo
+.env_mongo_ex
+
