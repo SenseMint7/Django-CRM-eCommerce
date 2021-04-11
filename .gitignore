@@ -2,8 +2,6 @@
 
 web/media/
 
-web/web/settings.py
-
 # mongodb
 mongodb/db/*.wt
 mongodb/db/*.lock
