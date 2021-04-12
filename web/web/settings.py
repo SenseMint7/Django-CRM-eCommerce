@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ecommerce.apps.EcommerceConfig',
+    'rest_framework',  # djangorestframework
 ]
 
 MIDDLEWARE = [
@@ -118,6 +119,32 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+
+ELASTICSEARCH_DSL = {
+    'default': {
+        'hosts': 'elasticsearch:9200'
+    },
+}
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {                       # handlers : 로그 레코드로 무슨 작업을 할 것인지 정의
+        'logstash': {
+            'level': 'INFO',
+            'class': 'logstash.TCPLogstashHandler',
+            'host': 'localhost',
+            'port': 5000,  # tcp
+            'version': 1,
+        },
+    },
+    'loggers': {                        # loggers : 처리해야 할 로그 레코드를 어떤 handler로 전달할지 정의
+        'django': {
+            'handlers': ['logstash'],   # 로그 레코드를 logstash handler로 전달
+        },
+    },
+}
 
 
 # Internationalization
