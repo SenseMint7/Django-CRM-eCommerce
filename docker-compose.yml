@@ -2,16 +2,18 @@ version: '3.2'
 
 services:
   mongo:
-    image: mongo
+    image: "mongo"
     container_name: "mongo"
     restart: always
     ports:
       - "27017:27017"
     env_file:
       - ./mongodb/config/.env_mongo
+    networks:
+      - elk
 
   mongo-express:
-    image: mongo-express
+    image: "mongo-express"
     container_name: "mongo-express"
     restart: always
     ports:
@@ -20,10 +22,13 @@ services:
       - mongo
     env_file:
       - ./mongodb/config/.env_mongo_ex
+    networks:
+      - elk
 
   elasticsearch:
     container_name: "elasticsearch"
     image: "docker.elastic.co/elasticsearch/elasticsearch:7.12.0"
+    restart: always
     volumes:
       - type: bind
         source: ./elasticsearch/config/elasticsearch.yml
@@ -36,7 +41,7 @@ services:
       - "9200:9200"
       - "9300:9300"
     environment:
-      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+      ES_JAVA_OPTS: "-Xmx1024m -Xms1024m"
       ELASTIC_PASSWORD: changeme
       discovery.type: single-node
     networks:
@@ -59,7 +64,7 @@ services:
       - "5000:5000/udp"
       - "9600:9600"
     environment:
-      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+      LS_JAVA_OPTS: "-Xmx1024m -Xms1024m"
     networks:
       - elk
     depends_on:

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ecommerce.apps.EcommerceConfig',
+    'user.apps.UserConfig',
     'rest_framework',  # djangorestframework
 ]
 
@@ -130,6 +131,11 @@ ELASTICSEARCH_DSL = {
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'formatters': {
+      'simple': {
+            'format': 'velname)s %(message)s'
+        },
+    },
     'handlers': {                       # handlers : 로그 레코드로 무슨 작업을 할 것인지 정의
         'logstash': {
             'level': 'INFO',
@@ -173,3 +179,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# 커스터마이징 될 것을 대비해서 현재 사용자 모델이 무엇인지 설정
+AUTH_USER_MODEL = 'user.User'
