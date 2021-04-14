@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ecommerce.apps.EcommerceConfig',
     'user.apps.UserConfig',
+    'drf_yasg',  # drf-yasg
     'rest_framework',  # djangorestframework
 ]
 
