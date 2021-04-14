@@ -25,5 +25,5 @@ class User(AbstractBaseUser, PermissionsMixin):
         verbose_name_plural = "유저 정보"
 
     def __str__(self):
-        return self.item_name
+        return self.username
 

@@ -6,4 +6,6 @@ djangorestframework==3.12.4
 elasticsearch==7.12.0
 elasticsearch-dsl==7.3.0
 python-logstash==0.4.6
+drf-yasg==1.20.0
+flex==6.14.1
 -e git://github.com/darklow/django-suit.git@v2#egg=django-suit
